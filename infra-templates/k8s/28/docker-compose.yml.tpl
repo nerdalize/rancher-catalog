@@ -19,6 +19,7 @@ kubelet:
         - --cluster-domain=cluster.local
         - --network-plugin=cni
         - --cni-conf-dir=/etc/cni/managed.d
+        - --v=3
         {{- if and (ne .Values.REGISTRY "") (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
         - --pod-infra-container-image=${REGISTRY}/${POD_INFRA_CONTAINER_IMAGE}
         {{- else if (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
@@ -217,6 +218,7 @@ controller-manager:
         - --address=0.0.0.0
         - --root-ca-file=/etc/kubernetes/ssl/ca.pem
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
+        - --v=3
     image: rancher/k8s:v1.6.6-rancher1-4
     labels:
         {{- if eq .Values.CONSTRAINT_TYPE "required" }}
