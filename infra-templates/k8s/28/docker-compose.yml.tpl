@@ -39,6 +39,7 @@ kubelet:
         - /dev:/host/dev
         - /var/flexvolumes:/host/var/flexvolumes
         - /var/nerdalize:/var/nerdalize
+        - /root/.nerd:/root/.nerd
     net: host
     pid: host
     ipc: host
@@ -227,6 +228,7 @@ controller-manager:
     volumes:
         - /var/flexvolumes:/host/var/flexvolumes
         - /var/nerdalize:/var/nerdalize
+        - /root/.nerd:/root/.nerd
     labels:
         {{- if eq .Values.CONSTRAINT_TYPE "required" }}
         io.rancher.scheduler.affinity:host_label: orchestration=true
