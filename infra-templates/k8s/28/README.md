@@ -1,4 +1,6 @@
-## Kubernetes 1.6.6
+## Kubernetes 1.6.6 (Nerdalize Edition)
+
+This is a modified version of Kubernetes that includes the Nerdalize flexvolume.
 
 ### Upgrading to this Version
 
