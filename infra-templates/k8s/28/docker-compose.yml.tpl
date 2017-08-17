@@ -26,7 +26,7 @@ kubelet:
         {{- else if (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
         - --pod-infra-container-image=${POD_INFRA_CONTAINER_IMAGE}
         {{- end }}
-    image: rancher/k8s:v1.6.6-rancher1-4
+    image: rancher/k8s:v1.7.2-rancher4
     volumes:
         - /run:/run
         - /var/run:/var/run
@@ -224,7 +224,7 @@ controller-manager:
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
         - --v=3
         - --flex-volume-plugin-dir=/host/var/flexvolumes
-    image: rancher/k8s:v1.6.6-rancher1-4
+    image: rancher/k8s:v1.7.2-rancher4
     volumes:
         - /var/flexvolumes:/host/var/flexvolumes
         - /var/nerdalize:/var/nerdalize
