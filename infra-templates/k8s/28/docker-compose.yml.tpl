@@ -38,7 +38,7 @@ kubelet:
         - rancher-cni-driver:/opt/cni:ro
         - /dev:/host/dev
         - /var/flexvolumes:/host/var/flexvolumes
-        - /tmp:/tmp
+        - /var/nerdalize:/var/nerdalize
     net: host
     pid: host
     ipc: host
@@ -226,7 +226,7 @@ controller-manager:
     image: rancher/k8s:v1.6.6-rancher1-4
     volumes:
         - /var/flexvolumes:/host/var/flexvolumes
-        - /tmp:/tmp
+        - /var/nerdalize:/var/nerdalize
     labels:
         {{- if eq .Values.CONSTRAINT_TYPE "required" }}
         io.rancher.scheduler.affinity:host_label: orchestration=true
