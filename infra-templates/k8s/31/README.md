@@ -1,4 +1,4 @@
-## Kubernetes v1.7.2 Nerdalize Edition
+## Kubernetes v1.7.2 Nerdalize Edition 2.0
 
 ### Software Versions
 
