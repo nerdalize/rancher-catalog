@@ -20,7 +20,7 @@ kubelet:
         - --network-plugin=cni
         - --cni-conf-dir=/etc/cni/managed.d
         - --v=3
-        - --volume-plugin-dir=/host/var/flexvolumes
+        - --volume-plugin-dir=/var/nerdalize/flexvolumes
         {{- if and (ne .Values.REGISTRY "") (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
         - --pod-infra-container-image=${REGISTRY}/${POD_INFRA_CONTAINER_IMAGE}
         {{- else if (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
@@ -41,7 +41,6 @@ kubelet:
         - rancher-cni-driver:/etc/cni:ro
         - rancher-cni-driver:/opt/cni:ro
         - /dev:/host/dev
-        - /var/flexvolumes:/host/var/flexvolumes
         - /var/nerdalize:/var/nerdalize
         - /root/.nerd:/root/.nerd
     net: host
@@ -250,10 +249,9 @@ controller-manager:
         - --root-ca-file=/etc/kubernetes/ssl/ca.pem
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
         - --v=3
-        - --flex-volume-plugin-dir=/host/var/flexvolumes
+        - --flex-volume-plugin-dir=/var/nerdalize/flexvolumes
     image: rancher/k8s:v1.7.2-rancher7
     volumes:
-        - /var/flexvolumes:/host/var/flexvolumes
         - /var/nerdalize:/var/nerdalize
         - /root/.nerd:/root/.nerd
     labels:
